@@ -1,7 +1,7 @@
 from nltk.tokenize import word_tokenize ,sent_tokenize
 from nltk.corpus import stopwords
 import nltk
-
+from nltk.stem import PorterStemmer
 s=''' Good muffins cost $10000.\nin New York. Please buy me... two of them.\n\nThanks.'''
 
 
@@ -21,3 +21,20 @@ for w in word_tokens:
 
 print(word_tokens)
 print(filtered_sentence)
+
+ps = PorterStemmer()
+ 
+# choose some words to be stemmed
+words = ["program", "programs", "programmer", "programming", "programmers"]
+ 
+for w in words:
+    print(w, " : ", ps.stem(w))
+
+nltk.download('averaged_perceptron_tagger_eng')
+s = '''Good muffins cost $3.88\nin New York.  Please buy me
+... two of them.\n\nThanks.'''
+
+word_tokens = word_tokenize(s) 
+
+tagged = nltk.pos_tag(word_tokens)
+print(tagged)
